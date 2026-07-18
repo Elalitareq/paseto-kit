@@ -19,4 +19,4 @@ export {
   ClaimError,
 } from './errors.js';
 
-export const VERSION = '0.0.0';
+export const VERSION = '0.1.0';

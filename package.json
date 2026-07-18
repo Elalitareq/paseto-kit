@@ -1,9 +1,27 @@
 {
   "name": "paseto-kit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Complete, runtime-agnostic PASETO v4 + full PASERK for JS/TS. Successor to panva/paseto.",
   "type": "module",
   "license": "MIT",
+  "author": "Tareq El-Ali",
+  "keywords": [
+    "paseto",
+    "paserk",
+    "v4",
+    "token",
+    "jwt-alternative",
+    "ed25519",
+    "xchacha20",
+    "crypto",
+    "authentication"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elalitareq/paseto-kit.git"
+  },
+  "homepage": "https://github.com/Elalitareq/paseto-kit#readme",
+  "bugs": "https://github.com/Elalitareq/paseto-kit/issues",
   "sideEffects": false,
   "exports": {
     ".": {

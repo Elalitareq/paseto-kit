@@ -2,5 +2,5 @@ import { expect, test } from 'vitest';
 import { VERSION } from '../src/index.js';
 
 test('module loads', () => {
-  expect(VERSION).toBe('0.0.0');
+  expect(VERSION).toBe('0.1.0');
 });
