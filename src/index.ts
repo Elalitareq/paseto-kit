@@ -3,6 +3,11 @@ export type { Payload, EncodeOpts, DecodeOpts, DecodeResult, Validate } from './
 export { generateLocalKey, generateKeyPair, randomBytes } from './keys/generate.js';
 export { LocalKey, SecretKey, PublicKey } from './keys/types.js';
 
+// PASETO v3 (NIST: P-384 / AES-256-CTR / HMAC-SHA384). Top-level encrypt/decrypt/
+// sign/verify remain v4; use the `v3` namespace for v3 tokens.
+export { v3 } from './paseto/v3.js';
+export { V3LocalKey, V3SecretKey, V3PublicKey, generateV3LocalKey, generateV3KeyPair } from './keys/v3.js';
+
 // PASERK — key serialization, ids, and wrapping
 export { toPaserk, fromPaserk } from './paserk/serialize.js';
 export { keyId } from './paserk/id.js';

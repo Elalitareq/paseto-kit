@@ -17,6 +17,6 @@ test('no footer', () => {
 
 test('rejects malformed', () => {
   expect(() => splitToken('nope')).toThrow(FormatError);
-  expect(() => splitToken('v3.local.aGVsbG8')).toThrow(FormatError);
+  expect(() => splitToken('v2.local.aGVsbG8')).toThrow(FormatError);
   expect(() => splitToken('v4.bogus.aGVsbG8')).toThrow(FormatError);
 });
