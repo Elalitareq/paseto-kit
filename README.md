@@ -6,6 +6,8 @@
 
 **The complete, runtime-agnostic PASETO v3/v4 + full PASERK library for JavaScript & TypeScript.**
 
+📖 **Writeup:** [Filling the PASETO gap in JavaScript](https://dev.to/elalitareq/filling-the-paseto-gap-in-javascript-paseto-kit-v3v4-full-paserk-be5)
+
 The de-facto Node PASETO library, [`panva/paseto`](https://github.com/panva/paseto), was
 **archived read-only in March 2025** — and the maintained alternatives are v4-only and don't
 implement PASERK key wrapping. `paseto-kit` is the successor that closes that gap: **both v3
