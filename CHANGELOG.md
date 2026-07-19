@@ -4,6 +4,23 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/), and the project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [0.2.1] - Unreleased
+
+### Security
+
+- **Strict base64url decoding.** Tokens and PASERK strings with invalid characters
+  or non-canonical trailing bits are now rejected (previously silently accepted),
+  matching the official expect-fail vectors (4-F-4 / 3-F-4) and preventing token
+  malleability.
+
+### Added
+
+- Negative-vector coverage: every official PASETO (v3/v4) and PASERK expect-fail
+  case is asserted to be rejected, including version/purpose confusion.
+- `npm run bench` — a micro-benchmark for v3/v4 operations.
+- A runtime-purity test that statically forbids `node:` imports and Node-only
+  globals in `src/`, guaranteeing the library stays runtime-agnostic.
+
 ## [0.2.0] - Unreleased
 
 ### Added

@@ -148,6 +148,18 @@ v3 token (and vice versa) — enforced by distinct key types.
 Key differences: the key is the **first** argument; claim validation is **explicit** via
 `{ validate }`; keys are typed (`LocalKey` / `SecretKey` / `PublicKey`).
 
+## Performance
+
+Representative throughput (`npm run bench`, Node 22, Apple Silicon — your numbers will vary):
+
+| Operation | ops/sec |
+|---|--:|
+| v4.local encrypt / decrypt | ~50,000 |
+| v4.public sign (Ed25519) | ~5,000 |
+| v4.public verify | ~1,100 |
+| v3.local encrypt / decrypt | ~29,000 |
+| v3.public sign / verify (P-384) | ~1,600 / ~300 |
+
 ## Security
 
 - Built on audited `@noble/*` primitives — no hand-rolled crypto, only spec assembly.
