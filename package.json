@@ -1,7 +1,7 @@
 {
   "name": "paseto-kit",
-  "version": "0.1.0",
-  "description": "Complete, runtime-agnostic PASETO v4 + full PASERK for JS/TS. Successor to panva/paseto.",
+  "version": "0.2.0",
+  "description": "Complete, runtime-agnostic PASETO v3/v4 + full PASERK for JS/TS. Successor to panva/paseto.",
   "type": "module",
   "license": "MIT",
   "author": "Tareq El-Ali",

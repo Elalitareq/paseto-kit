@@ -4,7 +4,7 @@
 [![CI](https://github.com/Elalitareq/paseto-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/Elalitareq/paseto-kit/actions/workflows/ci.yml)
 [![license](https://img.shields.io/npm/l/paseto-kit.svg)](./LICENSE)
 
-**The complete, runtime-agnostic PASETO v4 + full PASERK library for JavaScript & TypeScript.**
+**The complete, runtime-agnostic PASETO v3/v4 + full PASERK library for JavaScript & TypeScript.**
 
 A maintained successor to the archived [`panva/paseto`](https://github.com/panva/paseto).
 Unlike other current libraries, `paseto-kit` ships **v4 tokens** *and* **full PASERK key
@@ -21,6 +21,7 @@ Bun, browsers, and edge runtimes.
 |---|:---:|:---:|:---:|
 | Maintained | ❌ archived | ✅ | ✅ |
 | v4 local + public | ✅ | ✅ | ✅ |
+| v3 (NIST) local + public | ✅ | ❌ | ✅ |
 | PASERK key serialization | ✅ | partial | ✅ |
 | PASERK **wrapping** (`local-wrap`/`secret-wrap`) | ✅ | ❌ | ✅ |
 | PASERK **password** (`local-pw`/`secret-pw`) | ✅ | ❌ | ✅ |
@@ -112,6 +113,27 @@ const sealed = sealKey(key, publicKey);             // "k4.seal.…"
 const key3 = unsealKey(sealed, secretKey);
 ```
 
+## PASETO v3 (NIST)
+
+Need the NIST/FIPS-friendly variant (P-384 / AES-CTR / HMAC-SHA384)? Use the `v3`
+namespace — same shape as the top-level v4 API, with its own key types.
+
+```ts
+import { v3 } from 'paseto-kit';
+
+const key = v3.generateLocalKey();
+const token = v3.encrypt(key, { sub: 'user-123' });   // "v3.local.…"
+v3.decrypt(key, token, { validate: { exp: true } });
+
+const { secretKey, publicKey } = v3.generateKeyPair(); // P-384
+v3.verify(publicKey, v3.sign(secretKey, { role: 'admin' }));
+
+// Full v3 PASERK too: v3.toPaserk, v3.keyId, v3.wrapKey, v3.wrapWithPassword, v3.sealKey, …
+```
+
+Top-level `encrypt`/`decrypt`/`sign`/`verify` remain **v4**. A v4 key never works on a
+v3 token (and vice versa) — enforced by distinct key types.
+
 ## Migrating from panva/paseto
 
 | panva/paseto (`V4`) | paseto-kit |
@@ -138,8 +160,9 @@ See [SECURITY.md](./SECURITY.md) to report vulnerabilities.
 
 ## Roadmap
 
-- **v1.0** — v4 (local + public) + full PASERK. *(current)*
-- **Phase 2** — v3 (NIST: P-384 / AES-CTR / HMAC-SHA384) protocol + v3 PASERK.
+- **v4** (local + public) + full PASERK. ✅
+- **v3** (NIST: P-384 / AES-CTR / HMAC-SHA384) + full v3 PASERK. ✅
+- Toward **1.0** — browser CI, benchmarks, and an independent security review.
 
 ## License
 
