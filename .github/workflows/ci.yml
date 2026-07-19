@@ -22,7 +22,6 @@ jobs:
       - run: npm test
       - run: npm run build
 
-  # Cross-runtime smoke: import the built ESM bundle under Deno and Bun.
   cross-runtime:
     runs-on: ubuntu-latest
     steps:
@@ -33,9 +32,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: node scripts/runtime-smoke.mjs
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
-      - run: deno eval "import { generateLocalKey, encrypt, decrypt } from './dist/index.js'; const k = generateLocalKey(); const t = encrypt(k, { ok: true }); if (decrypt(k, t).payload.ok !== true) throw new Error('deno smoke failed'); console.log('deno ok');"
+      - run: deno run --allow-read scripts/runtime-smoke.mjs
       - uses: oven-sh/setup-bun@v2
-      - run: bun -e "import { generateLocalKey, encrypt, decrypt } from './dist/index.js'; const k = generateLocalKey(); const t = encrypt(k, { ok: true }); if (decrypt(k, t).payload.ok !== true) throw new Error('bun smoke failed'); console.log('bun ok');"
+      - run: bun scripts/runtime-smoke.mjs
