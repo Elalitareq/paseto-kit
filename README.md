@@ -6,11 +6,12 @@
 
 **The complete, runtime-agnostic PASETO v3/v4 + full PASERK library for JavaScript & TypeScript.**
 
-A maintained successor to the archived [`panva/paseto`](https://github.com/panva/paseto).
-Unlike other current libraries, `paseto-kit` ships **v4 tokens** *and* **full PASERK key
-management** (wrapping, password-wrapping, sealing, key IDs) — built on audited
-[`@noble`](https://paulmillr.com/noble/) primitives, running unmodified in Node, Deno,
-Bun, browsers, and edge runtimes.
+The de-facto Node PASETO library, [`panva/paseto`](https://github.com/panva/paseto), was
+**archived read-only in March 2025** — and the maintained alternatives are v4-only and don't
+implement PASERK key wrapping. `paseto-kit` is the successor that closes that gap: **both v3
+and v4**, local + public, with **full PASERK** (wrapping, password-wrapping, sealing, key IDs)
+— built on the audited [`@noble`](https://paulmillr.com/noble/) primitives and running
+unmodified in Node, Deno, Bun, browsers, and edge runtimes.
 
 > ⚠️ **Pre-1.0.** The v4 protocol and all 11 PASERK types pass the official test vectors,
 > but the library has not yet had an independent security audit. Review before production use.
