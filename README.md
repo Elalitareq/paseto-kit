@@ -1,5 +1,9 @@
 # paseto-kit
 
+[![npm](https://img.shields.io/npm/v/paseto-kit.svg)](https://www.npmjs.com/package/paseto-kit)
+[![CI](https://github.com/Elalitareq/paseto-kit/actions/workflows/ci.yml/badge.svg)](https://github.com/Elalitareq/paseto-kit/actions/workflows/ci.yml)
+[![license](https://img.shields.io/npm/l/paseto-kit.svg)](./LICENSE)
+
 **The complete, runtime-agnostic PASETO v4 + full PASERK library for JavaScript & TypeScript.**
 
 A maintained successor to the archived [`panva/paseto`](https://github.com/panva/paseto).
