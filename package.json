@@ -23,6 +23,9 @@
   "homepage": "https://github.com/Elalitareq/paseto-kit#readme",
   "bugs": "https://github.com/Elalitareq/paseto-kit/issues",
   "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

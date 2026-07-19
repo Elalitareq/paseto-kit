@@ -31,6 +31,7 @@ npm install paseto-kit
 ```
 
 Zero runtime dependencies beyond `@noble/ciphers`, `@noble/hashes`, `@noble/curves`.
+Requires **Node ≥ 20** (for the global WebCrypto CSPRNG), or any modern browser, Deno, Bun, or edge runtime.
 
 ## Quickstart
 
