@@ -1,11 +1,13 @@
 import { expect, test } from 'vitest';
 
-// Raw-import every source file (Vite feature — no node:fs needed).
-// `import.meta.glob` is provided by Vite/Vitest; TS doesn't ship its type.
-const glob = (import.meta as unknown as {
-  glob: (pattern: string, opts: Record<string, unknown>) => Record<string, string>;
-}).glob;
-const files = glob('../src/**/*.ts', { query: '?raw', import: 'default', eager: true });
+// Raw-import every source file (Vite macro — must be called inline so Vite can
+// transform it; no node:fs needed). TS doesn't ship the import.meta.glob type.
+// @ts-expect-error import.meta.glob is provided by Vite/Vitest at build time
+const files = import.meta.glob('../src/**/*.ts', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
 
 // The runtime-agnostic guarantee, enforced statically: src/ must not depend on
 // any Node built-in or global. This is what lets one build run in Node, Deno,
