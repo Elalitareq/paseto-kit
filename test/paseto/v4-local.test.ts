@@ -47,7 +47,8 @@ for (const v of local) {
 test('tampered ciphertext rejected', () => {
   const key = new LocalKey(hb('707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f'));
   const token = _encrypt(key, u('hi'), new Uint8Array(), new Uint8Array(), new Uint8Array(32));
-  const tampered = token.slice(0, -2) + (token.endsWith('a') ? 'b' : 'a');
+  const i = 12; // interior body char — keeps base64 canonical, forces a MAC failure
+  const tampered = token.slice(0, i) + (token[i] === 'A' ? 'B' : 'A') + token.slice(i + 1);
   expect(() => decryptRaw(key, tampered)).toThrow(DecryptError);
 });
 

@@ -45,6 +45,7 @@ for (const v of pub) {
 test('tampered v3.public signature rejected', () => {
   const { secretKey, publicKey } = generateV3KeyPair();
   const token = signRaw(secretKey, u('{"a":1}'));
-  const bad = token.slice(0, -2) + (token.endsWith('a') ? 'b' : 'a');
+  const i = 12; // interior message char — keeps base64 canonical, forces a signature failure
+  const bad = token.slice(0, i) + (token[i] === 'A' ? 'B' : 'A') + token.slice(i + 1);
   expect(() => verifyRaw(publicKey, bad)).toThrow(VerifyError);
 });
